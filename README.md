@@ -16,5 +16,5 @@ How to run
 Make sure you have Node.js installed, then run:
 
 ```bash
-node "c:\Code-You\Web Dev\summer-chores\callbackVersion.js"
+node callbackVersion.js
 ```
