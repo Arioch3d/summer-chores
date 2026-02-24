@@ -28,7 +28,7 @@ function weedEat(name) {
                 resolve();
             } else {
                 console.log(`${name} fell asleep after mowing the yard.`);
-                reject(new Error('fell asleep after mowing the yard'));
+                reject(new Error('Fell asleep'));
             }
         }, 1500);
     });
@@ -42,7 +42,7 @@ function trimHedges(name) {
                 resolve();
             } else {
                 console.log(`${name} fell asleep after weed eating the yard.`);
-                reject(new Error('fell asleep after weed eating the yard'));
+                reject(new Error('Fell asleep'));
             }
         }, 1000);
     });
@@ -56,7 +56,7 @@ function collectWood(name) {
                 resolve();
             } else {
                 console.log(`${name} fell asleep after trimming the hedges.`);
-                reject(new Error('fell asleep after trimming the hedges'));
+                reject(new Error('Fell asleep'));
             }
         }, 2500);
     });
@@ -70,24 +70,28 @@ function waterGarden(name) {
                 resolve();
             } else {
                 console.log(`${name} fell asleep after collecting wood.`);
-                reject(new Error('fell asleep after collecting wood'));
+                reject(new Error('Fell asleep'));
             }
         }, 500);
     });
 }
 
-function doSummerChores(name) {
-    if (typeof name !== 'string') throw new TypeError('Name must be a string literal');
+async function doSummerChores(name) {
+    if (typeof name !== 'string') {
+        throw new TypeError('Name must be a string literal');
+    }
 
-    mowYard(name)
-        .then(() => weedEat(name))
-        .then(() => trimHedges(name))
-        .then(() => collectWood(name))
-        .then(() => waterGarden(name))
-        .then(() => console.log(`${name} finished all their chores!`))
-        .catch(() => {
-        });
+    try {
+        await mowYard(name);
+        await weedEat(name);
+        await trimHedges(name);
+        await collectWood(name);
+        await waterGarden(name);
+        console.log(`${name} finished all their chores!`);
+    } catch (error) {
+        
+    }
 }
 
-
 doSummerChores("Charles");
+
