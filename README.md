@@ -1,27 +1,62 @@
-Summer Chores — Callback-based Chore Runner
+# Summer Chores 🚜🌿
 
-This small Node.js project contains two versions of the same Saturday chores routine: a callback-based implementation and a Promise-based implementation. Both model a set of chores performed in order and may stop early if the person "falls asleep" (simulated).
+A simple Node.js learning project that simulates completing a list of Saturday chores. It demonstrates three different asynchronous patterns in JavaScript:
 
-Files
+1. **Callbacks** (`callbackVersion.js`)
+2. **Promises** (`promiseVersion.js`)
+3. **Async/Await** (`asyncAwaitVersion.js`)
 
-- `callbackVersion.js`: runs the chores sequentially with a callback-based flow. The script also demonstrates a simple fatigue model where sleep probability increases as chores take time.
-- `promiseVersion.js`: the same routine implemented using Promises; `doSummerChores` chains the promise-returning chore functions.
+Each version executes the same ordered routine and may terminate early if the worker "falls asleep" (simulated with randomness).
 
-Behavior
+---
 
-- Chores are performed in this order: Mow the yard; Weedeat the edges of the house and fence line; Trim the hedges; Collect fallen wood for summer night fires; Water the garden.
-- Each chore logs completion messages. If a chore fails (the person falls asleep), an appropriate "fell asleep after ..." message is logged and the routine stops.
+## Chore List (in order)
 
-How to run
+1. Mowing the yard (2000 ms)
+2. Weedeating the edges of the house and fence line (1500 ms)
+3. Trimming the hedges (1000 ms)
+4. Collecting fallen wood for summer night fires (2500 ms)
+5. Watering the garden (500 ms)
 
-Make sure you have Node.js installed, then run either version:
+> The person never falls asleep before mowing the yard.
 
-```bash
-node callbackVersion.js
-```
+Running through all chores successfully logs a celebratory message; a failure logs the point at which the worker nodded off.
 
-or
+---
 
-```bash
-node promiseVersion.js
-```
+## Installation & Usage
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-username>/summer-chores.git
+   cd summer-chores
+   ```
+2. Ensure you have Node.js (v14+) installed.
+3. Run any version:
+   ```bash
+   node callbackVersion.js   # callback style
+   node promiseVersion.js    # promise chain
+   node asyncAwaitVersion.js # async/await
+   ```
+
+Each script prints a total time estimate at startup and then steps through the chores.
+
+---
+
+## Script Details
+
+- `callbackVersion.js` uses nested callbacks to model "callback hell".
+- `promiseVersion.js` returns Promises from each chore function and chains them with `.then()`.
+- `asyncAwaitVersion.js` is a thin wrapper around the same promise-based chores using `async`/`await` syntax.
+
+You can adjust the `SUCCESS_RATE` constant in each file to make falling asleep more or less likely.
+
+---
+
+## Contributing & License
+
+This repository is intended as a learning exercise. Feel free to fork and modify for practice.
+
+---
+
+_Note:_ create a GitHub repository named `summer-chores`, push your local changes, and share the link as your submission.

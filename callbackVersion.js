@@ -11,51 +11,51 @@ console.log(`Total time to complete all chores: ${totalMilliseconds} millisecond
 
 const SUCCESS_RATE = 0.85;
 
-function mowYard(name, callback) {
+function mowYard(name, cb) {
     setTimeout(() => {
         console.log(`${name} mowed the yard.`);
-        callback();
+        cb();
     }, 2000);
 }
 
-function weedEat(name, callback) {
+function weedEat(name, cb) {
     setTimeout(() => {
         if (Math.random() < SUCCESS_RATE) {
             console.log(`${name} finished using the weed eater.`);
-            callback();
+            cb();
         } else {
             console.log(`${name} fell asleep after mowing the yard.`);
         }
     }, 1500);
 }
 
-function trimHedges(name, callback) {
+function trimHedges(name, cb) {
     setTimeout(() => {
         if (Math.random() < SUCCESS_RATE) {
             console.log(`${name} finished trimming the hedges.`);
-            callback();
+            cb();
         } else {
             console.log(`${name} fell asleep after weed eating the yard.`);
         }
     }, 1000);
 }
 
-function collectWood(name, callback) {
+function collectWood(name, cb) {
     setTimeout(() => {
         if (Math.random() < SUCCESS_RATE) {
             console.log(`${name} finished collecting wood.`);
-            callback();
+            cb();
         } else {
             console.log(`${name} fell asleep after trimming the hedges.`);
         }
     }, 2500);
 }
 
-function waterGarden(name, callback) {
+function waterGarden(name, cb) {
     setTimeout(() => {
         if (Math.random() < SUCCESS_RATE) {
             console.log(`${name} finished watering the garden.`);
-            callback();
+            cb();
         } else {
             console.log(`${name} fell asleep after collecting wood.`);
         }
@@ -80,5 +80,4 @@ function doSummerChores(name) {
     });
 }
 
-doSummerChores("Charles");
-
+doSummerChores('Charles');
